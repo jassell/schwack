@@ -1,0 +1,11 @@
+{
+  "ServerUri": "https://sonarqube",
+  "Organization": null,
+  "ProjectKey": "schwack",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AWei907LyKYxLKMFjktx",
+      "ProfileTimestamp": "2018-12-26T11:30:58-05:00"
+    }
+  }
+}

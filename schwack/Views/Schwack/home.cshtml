@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/schwack/home.js"></script>
+<script>
+    var urlLoadData = '@Url.Action("LoadData")';
+    var urlSignIn = '@Url.Action("SignIn")';
+    var urlSignOut = '@Url.Action("SignOut")';
+    var urlGetUsers = '@Url.Action("GetUsers")';
+    var urlPostMessage = '@Url.Action("PostMessage")';
+    var urlGetMessages = '@Url.Action("GetMessages")';
+
+</script>
+<p>
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="messages"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <select id="lbOnline" multiple class="form-control" size="20"></select>
+
+        </div>
+        <div class="col-sm-9">
+
+
+
+            <div class="row">
+                <div class="col-sm-3" style="text-align:right">
+                    <input id="txtWho" class="form-control" type="text" placeholder="identify yourself" />
+                </div><div class="col-sm-1">
+                    <button id="btnSignIn" class="btn-default btn btn-sm">sign in</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-11">
+                    <textarea id="txtMessage" class="form-control" rows="3" type="text" style="max-width:100%" spellcheck="true" placeholder="message here"></textarea>
+                </div>
+                <div class="col-sm-1" style="text-align:right; padding-top:44px">
+                    <button id="btnSend" class="btn-default btn btn-sm" style="display:none;">send</button>
+                </div>
+            </div>
+
+            <div id="lblConversation" class="row">
+
+            </div>
+
+        </div>
+    </div>
+</p>
+
