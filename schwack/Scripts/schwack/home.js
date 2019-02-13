@@ -1,6 +1,19 @@
 ﻿var glb_User = '';
 var glb_MessageTo = '';
 
+var tabFocused = true;
+window.onblur = function () {
+    tabFocused = false;
+}
+window.onfocus = function () {
+    tabFocused = true;
+    document.title = document.title.replace('New Messages! ', '');
+}
+// too make it complete, also add onblur to document.
+// For browsers using tabs (like firefox)
+document.onblur = window.onblur;
+document.focus = window.focus;
+
 $().ready(function () {
     setupEventHandlers();
     setInterval(getUsers, 1000);
@@ -155,7 +168,6 @@ function getMessages() {
         error: error_ajax
     });
 }
-
 function success_getMessages(data) {
     if (data.success) {
         if (data.messages.length > 0) {
@@ -167,7 +179,9 @@ function success_getMessages(data) {
 
                 $('#lblConversation').prepend(message + '\r\n');
             });
+            changeTitle();
         }
+
     } else {
         var html = messageBox('Warning', 'Error', 'Error occurred getting messages');
         $('#messages').html(html);
@@ -182,6 +196,12 @@ function populateUsers(users) {
 
     if (glb_MessageTo.length > 0) {
         $('#lbOnline option[id=' + glb_MessageTo + ']').prop('selected', true);
+    }
+}
+
+function changeTitle() {
+    if (!tabFocused) {
+        document.title = 'New Messages! ' + document.title;
     }
 }
 
