@@ -33,6 +33,8 @@
             this.btnSignIn = new System.Windows.Forms.Button();
             this.txtWho = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtMessage = new System.Windows.Forms.TextBox();
+            this.btnSend = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +46,7 @@
             this.groupBox1.Size = new System.Drawing.Size(200, 425);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Users";
+            this.groupBox1.Text = "schwackers";
             // 
             // lstUsers
             // 
@@ -60,7 +62,7 @@
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(75, 23);
             this.btnSignIn.TabIndex = 1;
-            this.btnSignIn.Text = "Sign In";
+            this.btnSignIn.Text = "sign in";
             this.btnSignIn.UseVisualStyleBackColor = true;
             this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
@@ -70,21 +72,43 @@
             this.txtWho.Name = "txtWho";
             this.txtWho.Size = new System.Drawing.Size(255, 20);
             this.txtWho.TabIndex = 2;
+            this.txtWho.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtWho_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(220, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Identify Yourself";
+            this.label1.Text = "idintify youself";
+            // 
+            // txtMessage
+            // 
+            this.txtMessage.Location = new System.Drawing.Point(213, 75);
+            this.txtMessage.Multiline = true;
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(486, 68);
+            this.txtMessage.TabIndex = 4;
+            this.txtMessage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMessage_KeyPress);
+            // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(705, 120);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.TabIndex = 5;
+            this.btnSend.Text = "send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSend);
+            this.Controls.Add(this.txtMessage);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtWho);
             this.Controls.Add(this.btnSignIn);
@@ -105,6 +129,8 @@
         private System.Windows.Forms.Button btnSignIn;
         private System.Windows.Forms.TextBox txtWho;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtMessage;
+        private System.Windows.Forms.Button btnSend;
     }
 }
 

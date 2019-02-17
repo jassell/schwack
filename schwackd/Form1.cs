@@ -23,6 +23,9 @@ namespace schwackd
             InitializeComponent();
         }
 
+
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
             var users = new SchwackHelper().GetUsers();
@@ -30,6 +33,33 @@ namespace schwackd
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
+        {
+            SignIn();
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            Send();
+        }
+
+        private void txtWho_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                SignIn();
+            }
+        }
+
+
+
+
+        private void PopulateUsers(List<User> users)
+        {
+            lstUsers.DataSource = users;
+            lstUsers.ValueMember = "Name";
+        }
+
+        private void SignIn()
         {
             var who = txtWho.Text;
 
@@ -43,16 +73,27 @@ namespace schwackd
             ThisUser = helper.SignIn(who);
             var onlineUsers = helper.GetUsers();
             PopulateUsers(onlineUsers);
+            btnSignIn.Visible = false;
+            txtWho.Enabled = false;
         }
 
-
-
-        private void PopulateUsers(List<User> users)
+        private void Send()
         {
-            lstUsers.DataSource = users;
-            lstUsers.ValueMember = "Name";
+            var message = txtMessage.Text;
+            var to = ((User)lstUsers.SelectedItem).Id;
+            var from = ThisUser.Id;
+            new SchwackHelper().PostMessage(from.ToString(), to.ToString(), message);
+
+            txtMessage.Text = "";
         }
 
+        private void txtMessage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                Send();
+            }
+        }
 
 
 
@@ -96,8 +137,7 @@ namespace schwackd
             return FlashWindowEx(ref fInfo);
         }
 
+
         #endregion
     }
-
-
 }
