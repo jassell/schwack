@@ -63,6 +63,16 @@ namespace schwackd.Helpers
             throw new ApplicationException("Something went really wrong");
         }
 
+        public void SignOut(string id)
+        {
+            var server = ConfigurationManager.AppSettings["SchwackServer"];
+            var client = new RestClient(server);
+            var request = new RestRequest("schwack/schwack/SignOut", Method.GET, DataFormat.Json);
+            request.AddQueryParameter("id", id);
+
+            var queryResults = client.Execute<object>(request).Data;
+        }
+
         private User ConvertSignInUser(string json)
         {
             return JsonConvert.DeserializeObject<User>(json);

@@ -32,6 +32,12 @@ namespace schwackd
             PopulateUsers(users);
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SignOut();
+
+        }
+
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             SignIn();
@@ -77,6 +83,11 @@ namespace schwackd
             txtWho.Enabled = false;
         }
 
+        private void SignOut()
+        {
+            new SchwackHelper().SignOut(ThisUser.Id.ToString());
+        }
+
         private void Send()
         {
             var message = txtMessage.Text;
@@ -84,6 +95,7 @@ namespace schwackd
             var from = ThisUser.Id;
             new SchwackHelper().PostMessage(from.ToString(), to.ToString(), message);
 
+            txtMessages.Text = string.Format("{0} {1}:  {2}\r\n {3}\r\n",DateTime.Now.ToString(), ThisUser.Name, txtMessage.Text, txtMessages.Text);
             txtMessage.Text = "";
         }
 
@@ -139,5 +151,7 @@ namespace schwackd
 
 
         #endregion
+
+
     }
 }
