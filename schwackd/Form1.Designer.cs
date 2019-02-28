@@ -36,6 +36,7 @@
             this.txtMessage = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.txtMessages = new System.Windows.Forms.TextBox();
+            this.btnGetMessages = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,11 +114,22 @@
             this.txtMessages.Size = new System.Drawing.Size(567, 276);
             this.txtMessages.TabIndex = 6;
             // 
+            // btnGetMessages
+            // 
+            this.btnGetMessages.Location = new System.Drawing.Point(705, 91);
+            this.btnGetMessages.Name = "btnGetMessages";
+            this.btnGetMessages.Size = new System.Drawing.Size(75, 23);
+            this.btnGetMessages.TabIndex = 7;
+            this.btnGetMessages.Text = "get";
+            this.btnGetMessages.UseVisualStyleBackColor = true;
+            this.btnGetMessages.Click += new System.EventHandler(this.btnGetMessages_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnGetMessages);
             this.Controls.Add(this.txtMessages);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtMessage);
@@ -145,6 +157,7 @@
         private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox txtMessages;
+        private System.Windows.Forms.Button btnGetMessages;
     }
 }
 

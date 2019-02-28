@@ -83,6 +83,18 @@ namespace schwackd.Helpers
             return JsonConvert.DeserializeObject<string>(json);
         }
 
+        // public JsonResult GetMessages(string forId)
+        public void GetMessages(string forId)
+        {
+            var server = ConfigurationManager.AppSettings["SchwackServer"];
+            var client = new RestClient(server);
+            var request = new RestRequest("schwack/schwack/GetMessages", Method.GET, DataFormat.Json);
+            request.AddQueryParameter("forId", forId);
+
+            var data = client.Execute<object>(request).Data;
+
+        }
+
         public void PostMessage(string from, string to, string message)
         {
             var server = ConfigurationManager.AppSettings["SchwackServer"];

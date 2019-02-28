@@ -48,6 +48,11 @@ namespace schwackd
             Send();
         }
 
+        private void btnGetMessages_Click(object sender, EventArgs e)
+        {
+            GetMessages();
+        }
+
         private void txtWho_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -99,6 +104,11 @@ namespace schwackd
             txtMessage.Text = "";
         }
 
+        private void GetMessages()
+        {
+            new SchwackHelper().GetMessages(ThisUser.Id.ToString());
+        }
+
         private void txtMessage_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -148,6 +158,7 @@ namespace schwackd
 
             return FlashWindowEx(ref fInfo);
         }
+
 
 
         #endregion
